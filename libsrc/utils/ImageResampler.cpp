@@ -153,7 +153,7 @@ uint8_t ImageResampler::clamp(int x)
 	return (x<0) ? 0 : ((x>255) ? 255 : uint8_t(x));
 }
 
-void incrementFrameCounter()
+void ImageResampler::incrementFrameCounter()
 {
 	_outputFrameCounter++;		
 }
