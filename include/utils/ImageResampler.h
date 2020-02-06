@@ -35,6 +35,6 @@ private:
 	int _cropRight;
 	int _cropTop;
 	int _cropBottom;
-	int _output_frame_counter;
+	int _outputFrameCounter;
 	VideoMode _videoMode;
 };
