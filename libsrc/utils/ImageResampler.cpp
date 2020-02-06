@@ -16,7 +16,7 @@ ImageResampler::ImageResampler()
 	, _cropBottom(0)
 	, _videoMode(VIDEO_2D)
 {
-	output_frame_counter = 0;
+	_output_frame_counter = 0;
 }
 
 ImageResampler::~ImageResampler()
@@ -140,12 +140,12 @@ void ImageResampler::processImage(const uint8_t * data, int width, int height, i
 	}
 	
 	// need to generate rolling filename with 5 digit zero-padded count e.g. frame-00324.jpg
-	QString filename = QString("frame-%1.jpg").arg(outputFrameCounter, 5, 10, QChar('0'));
+	QString filename = QString("frame-%1.jpg").arg(_outputFrameCounter, 5, 10, QChar('0'));
 	// convert image data to QImage then save as JPEG
 	QImage jpgImage((const uint8_t *) image.memptr(), image.width(), image.height(), 3*image.width(), QImage::Format_RGB888);
 	jpgImage.save(filename, JPG);
 	// increment counter for filename generation
-	output_frame_counter++;
+	_output_frame_counter++;
 }
 
 uint8_t ImageResampler::clamp(int x)
