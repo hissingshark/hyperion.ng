@@ -24,6 +24,8 @@ public:
 
 	void processImage(const uint8_t * data, int width, int height, int lineLength, PixelFormat pixelFormat, Image<ColorRgb> & outputImage) const;
 
+	void incrementFrameCounter();
+	
 private:
 	static inline uint8_t clamp(int x);
 	static void yuv2rgb(uint8_t y, uint8_t u, uint8_t v, uint8_t & r, uint8_t & g, uint8_t & b);
