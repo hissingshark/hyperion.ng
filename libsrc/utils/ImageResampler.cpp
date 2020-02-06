@@ -1,6 +1,12 @@
 #include "utils/ImageResampler.h"
 #include <utils/Logger.h>
 
+// QT includes
+
+// excessive #include <QCoreApplication>
+#include <QImage>
+#include <QString>
+
 ImageResampler::ImageResampler()
 	: _horizontalDecimation(1)
 	, _verticalDecimation(1)
@@ -131,6 +137,14 @@ void ImageResampler::processImage(const uint8_t * data, int width, int height, i
 			}
 		}
 	}
+	
+	// need to generate rolling filename with 5 digit zero-padded count e.g. frame-00324.jpg
+	filename = QString("frame-%1.jpg").arg(outputFrameCounter, 5, 10, QChar('0'));
+	// save JPG data to file
+	// TODO this wont work as image needs conversion to a QImage type
+	outputImage.save(filename, JPG);
+	// increment counter for filename generation
+	output_frame_counter++;
 }
 
 uint8_t ImageResampler::clamp(int x)
