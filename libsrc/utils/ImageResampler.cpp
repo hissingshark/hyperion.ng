@@ -145,12 +145,17 @@ void ImageResampler::processImage(const uint8_t * data, int width, int height, i
 	QImage jpgImage((const uint8_t *) outputImage.memptr(), outputImage.width(), outputImage.height(), 3*outputImage.width(), QImage::Format_RGB888);
 	jpgImage.save(filename, "JPG");
 	// increment counter for filename generation
-	_outputFrameCounter++;
+	incrementFrameCounter();
 }
 
 uint8_t ImageResampler::clamp(int x)
 {
 	return (x<0) ? 0 : ((x>255) ? 255 : uint8_t(x));
+}
+
+void incrementFrameCounter()
+{
+	_outputFrameCounter++;		
 }
 
 void ImageResampler::yuv2rgb(uint8_t y, uint8_t u, uint8_t v, uint8_t &r, uint8_t &g, uint8_t &b)
