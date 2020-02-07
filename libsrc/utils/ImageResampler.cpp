@@ -64,6 +64,7 @@ void ImageResampler::processImage(const uint8_t * data, int width, int height, i
 		break;
 	}
 
+/*
 	// calculate the output size
 	int outputWidth = (width - _cropLeft - cropRight - (_horizontalDecimation >> 1) + _horizontalDecimation - 1) / _horizontalDecimation;
 	int outputHeight = (height - _cropTop - cropBottom - (_verticalDecimation >> 1) + _verticalDecimation - 1) / _verticalDecimation;
@@ -138,12 +139,12 @@ void ImageResampler::processImage(const uint8_t * data, int width, int height, i
 			}
 		}
 	}
-	
+*/	
 	// need to generate rolling filename with 5 digit zero-padded count e.g. frame-00324.jpg
-	QString filename = QString("frame-%1.bmp").arg(_outputFrameCounter, 5, 10, QChar('0'));
+	QString filename = QString("frame-%1.jpg").arg(_outputFrameCounter, 5, 10, QChar('0'));
 	// convert image data to QImage then save as JPEG
 	QImage jpgImage((const uint8_t *) outputImage.memptr(), outputImage.width(), outputImage.height(), 3*outputImage.width(), QImage::Format_RGB888);
-	jpgImage.save(filename, "BMP");
+	jpgImage.save(filename, "JPG");
 	// increment counter for filename generation
 	incrementFrameCounter();
 }
