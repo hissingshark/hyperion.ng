@@ -24,7 +24,7 @@ public:
 
 	void processImage(const uint8_t * data, int width, int height, int lineLength, PixelFormat pixelFormat, Image<ColorRgb> & outputImage) const;
 
-	void incrementFrameCounter();
+	void incrementFrameCounter() const;
 	
 private:
 	static inline uint8_t clamp(int x);
