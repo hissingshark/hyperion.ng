@@ -272,6 +272,10 @@ private:
 	void handleInstanceCommand(const QJsonObject &message, const QString &command, const int tan);
 
 	///
+	/// HISSINGSHARK
+	void handleInjectMsgCommand(const QJsonObject &message, const QString &command, const int tan);
+
+	///
 	/// Handle an incoming JSON message of unknown type
 	///
 	void handleNotImplemented();

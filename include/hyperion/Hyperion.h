@@ -167,6 +167,9 @@ public slots:
 	///
 	void setColor(const int priority, const std::vector<ColorRgb> &ledColors, const int timeout_ms = -1, const QString& origin = "System" ,bool clearEffects = true);
 
+        /// HISSINGSHARK
+        void injectMsg(const QString& msg);
+
 	///
 	/// @brief Set the given priority to inactive
 	/// @param priority  The priority

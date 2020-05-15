@@ -116,6 +116,7 @@ int main(int argc, char * argv[])
 		ColorOption     & argbAdjust            = parser.add<ColorOption>  ('b', "blackAdjustment"        , "Set the adjustment of the black color (requires colors in hex format as RRGGBB)");
 		Option          & argMapping            = parser.add<Option>       ('m', "ledMapping"             , "Set the methode for image to led mapping valid values: multicolor_mean, unicolor_mean");
 		Option          & argVideoMode          = parser.add<Option>       ('V', "videoMode"              , "Set the video mode valid values: 2D, 3DSBS, 3DTAB");
+		Option          & argInjectMsg          = parser.add<Option>       ('j', "injectMsg"              , "Send a message to the LED driver in place of the magic word.");
 		IntOption       & argSource             = parser.add<IntOption>    (0x0, "sourceSelect"           , "Set current active priority channel and deactivate auto source switching");
 		BooleanOption   & argSourceAuto         = parser.add<BooleanOption>(0x0, "sourceAutoSelect"       , "Enables auto source, if disabled prio by manual selecting input source");
 		BooleanOption   & argOff                = parser.add<BooleanOption>(0x0, "off"                    , "Deactivates hyperion");
@@ -142,7 +143,7 @@ int main(int argc, char * argv[])
 		int commandCount = count({ parser.isSet(argColor), parser.isSet(argImage), parser.isSet(argEffect), parser.isSet(argCreateEffect), parser.isSet(argDeleteEffect),
 		    parser.isSet(argServerInfo), parser.isSet(argSysInfo),parser.isSet(argClear), parser.isSet(argClearAll), parser.isSet(argEnableComponent), parser.isSet(argDisableComponent), colorAdjust,
 		    parser.isSet(argSource), parser.isSet(argSourceAuto), parser.isSet(argOff), parser.isSet(argOn), parser.isSet(argConfigGet), parser.isSet(argSchemaGet), parser.isSet(argConfigSet),
-		    parser.isSet(argMapping),parser.isSet(argVideoMode) });
+		    parser.isSet(argMapping),parser.isSet(argVideoMode),parser.isSet(argInjectMsg) });
 		if (commandCount != 1)
 		{
 			qWarning() << (commandCount == 0 ? "No command found." : "Multiple commands found.") << " Provide exactly one of the following options:";
@@ -161,6 +162,7 @@ int main(int argc, char * argv[])
 			showHelp(argSourceAuto);
 			showHelp(argConfigGet);
 			showHelp(argVideoMode);
+			showHelp(argInjectMsg);
 			qWarning() << "or one or more of the available color modding operations:";
 			showHelp(argId);
 			showHelp(argBrightness);
@@ -287,6 +289,10 @@ int main(int argc, char * argv[])
 		else if (parser.isSet(argVideoMode))
 		{
 			connection.setVideoMode(argVideoMode.value(parser));
+		}
+		else if (parser.isSet(argInjectMsg))
+		{
+			connection.setInjectMsg(argInjectMsg.value(parser));
 		}
 		else if (colorAdjust)
 		{

@@ -548,6 +548,16 @@ void JsonConnection::setVideoMode(QString videoMode)
 	parseReply(reply);
 }
 
+void JsonConnection::setInjectMsg(const QString &msg)
+{
+	QJsonObject command;
+	command["command"] = QString("inject-msg");
+	command["msg"] = msg;
+
+	QJsonObject reply = sendMessage(command);
+	parseReply(reply);
+}
+
 void JsonConnection::setToken(const QString &token)
 {
 	// create command

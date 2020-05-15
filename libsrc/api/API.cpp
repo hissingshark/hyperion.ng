@@ -99,6 +99,11 @@ void API::setColor(const int &priority, const std::vector<uint8_t> &ledColors, c
     }
 }
 
+void API::injectMsg(const QString &msg)
+{
+    QMetaObject::invokeMethod(_hyperion, "injectMsg", Qt::QueuedConnection, Q_ARG(QString, msg));
+}
+
 bool API::setImage(ImageCmdData &data, hyperion::Components comp, QString &replyMsg, const hyperion::Components &callerComp)
 {
     // truncate name length

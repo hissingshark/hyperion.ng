@@ -1,0 +1,19 @@
+{
+	"type":"object",
+	"required":true,
+	"properties":{
+		"command": {
+			"type" : "string",
+			"required" : true,
+			"enum" : ["inject-msg"]
+		},
+		"tan" : {
+			"type" : "integer"
+		},
+		"msg": {
+			"type": "string",
+			"required": true
+		}
+	},
+	"additionalProperties": false
+}

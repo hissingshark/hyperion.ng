@@ -405,6 +405,11 @@ end:
 		_muxer.queuePush();
 }
 
+void Hyperion::injectMsg(const QString& msg)
+{
+	Warning(_log, "injectMsg triggered!");
+}
+
 const QStringList & Hyperion::getAdjustmentIds() const
 {
 	return _raw2ledAdjustment->getAdjustmentIds();

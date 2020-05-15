@@ -178,6 +178,9 @@ public:
 	// sets video mode 3D/2D
 	void setVideoMode(QString videoMode);
 
+	// HISSINGSHARK
+	void setInjectMsg(const QString &msg);
+
 	// set the specified authorization token
 	void setToken(const QString &token);
 

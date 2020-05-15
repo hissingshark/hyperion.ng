@@ -65,6 +65,10 @@ protected:
     void setColor(const int &priority, const std::vector<uint8_t> &ledColors, const int &timeout_ms = -1, const QString &origin = "API", const hyperion::Components &callerComp = hyperion::COMP_INVALID);
 
     ///
+    /// HISSINGSHARK
+    void injectMsg(const QString &msg);
+
+    ///
     /// @brief Set a image
     /// @param[in]  data      The command data
     /// @param[in]  comp      The component that should be used

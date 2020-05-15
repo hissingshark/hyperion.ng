@@ -191,6 +191,8 @@ proceed:
 		handleVideoModeCommand(message, command, tan);
 	else if (command == "instance")
 		handleInstanceCommand(message, command, tan);
+	else if (command == "inject-msg")
+		handleInjectMsgCommand(message, command, tan);
 
 	// BEGIN | The following commands are derecated but used to ensure backward compatibility with hyperion Classic remote control
 	else if (command == "clearall")
@@ -1371,6 +1373,12 @@ void JsonAPI::handleInstanceCommand(const QJsonObject &message, const QString &c
 			sendErrorReply(replyMsg, command + "-" + subc, tan);
 		return;
 	}
+}
+
+void JsonAPI::handleInjectMsgCommand(const QJsonObject &message, const QString &command, const int tan)
+{
+	emit forwardJsonMessage(message);
+	sendSuccessReply(command, tan);
 }
 
 void JsonAPI::handleNotImplemented()
