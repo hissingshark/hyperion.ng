@@ -407,7 +407,7 @@ end:
 
 void Hyperion::injectMsg(const QString& msg)
 {
-	Warning(_log, "injectMsg triggered!");
+	Debug(_log, "injectMsg triggered with message:%s", QSTRING_CSTR(msg));
 }
 
 const QStringList & Hyperion::getAdjustmentIds() const

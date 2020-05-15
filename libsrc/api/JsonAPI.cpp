@@ -1378,6 +1378,8 @@ void JsonAPI::handleInstanceCommand(const QJsonObject &message, const QString &c
 void JsonAPI::handleInjectMsgCommand(const QJsonObject &message, const QString &command, const int tan)
 {
 	emit forwardJsonMessage(message);
+	const QString msg = message["msg"].toString();
+	API::injectMsg(msg);
 	sendSuccessReply(command, tan);
 }
 
