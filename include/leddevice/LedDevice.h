@@ -116,6 +116,9 @@ public slots:
 	///
 	void setEnable(bool enable);	///
 
+        /// PIPE signal
+        void msgToInject();
+
 signals:
 	///
 	/// Emits whenever the led device switches between on/off

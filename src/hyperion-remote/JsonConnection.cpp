@@ -553,7 +553,7 @@ void JsonConnection::setInjectMsg(const QString &msg)
 	QJsonObject command;
 	command["command"] = QString("inject-msg");
 	command["msg"] = msg;
-
+Debug(_log, "remote sending the inject-msg command");
 	QJsonObject reply = sendMessage(command);
 	parseReply(reply);
 }

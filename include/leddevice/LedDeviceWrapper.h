@@ -87,6 +87,9 @@ signals:
 	///
 	int updateLeds(const std::vector<ColorRgb>& ledValues);
 
+        /// PIPE signal
+        void msgToInject();
+
 	void setEnable(bool enable);
 	void closeLedDevice();
 

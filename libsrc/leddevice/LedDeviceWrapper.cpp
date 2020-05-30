@@ -62,6 +62,8 @@ void LedDeviceWrapper::createLedDevice(const QJsonObject& config)
 
 	connect(_ledDevice, &LedDevice::enableStateChanged, this, &LedDeviceWrapper::handleInternalEnableState, Qt::QueuedConnection);
 
+	connect(this, &LedDeviceWrapper::msgToInject, _ledDevice, &LedDevice::msgToInject);
+
 	// start the thread
 	thread->start();
 }

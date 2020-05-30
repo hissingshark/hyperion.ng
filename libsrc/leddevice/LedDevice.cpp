@@ -198,6 +198,12 @@ int LedDevice::updateLeds(const std::vector<ColorRgb>& ledValues)
 	return retval;
 }
 
+void LedDevice::msgToInject()
+{
+        Debug(_log, "msgToInject signal received in Leddevice");
+
+}
+
 int LedDevice::writeBlack()
 {
 	return _deviceReady ? updateLeds(std::vector<ColorRgb>(static_cast<unsigned long>(_ledCount), ColorRgb::BLACK )) : -1;

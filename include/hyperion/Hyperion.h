@@ -467,6 +467,9 @@ signals:
 	///
 	void started();
 
+	///
+	void msgToInject();
+
 public slots:
 	///
 	/// Updates the priority muxer with the current time and (re)writes the led color with applied
